@@ -93,12 +93,12 @@ def save_tsne_plot():
     print(label_appended_tsne_embeddings.shape)
 
     # Save the embeddings as a .npy file
-    np.save(f'../../embeddings/simclr/embeddings_{args.file_name}.npy', label_appended_embeddings.numpy())
-    np.save(f'../../embeddings/simclr/tsne_embeddings_{args.file_name}.npy', label_appended_tsne_embeddings.numpy())
+    np.save(f'../../embeddings/simclr/embeddings_SimCLR-{args.dataset}-latent_dim{args.latent_dim}-epoch{args.inference_epoch}.npy', label_appended_embeddings.numpy())
+    np.save(f'../../embeddings/simclr/tsne_embeddings_SimCLR-{args.dataset}-latent_dim{args.latent_dim}-epoch{args.inference_epoch}.npy', label_appended_tsne_embeddings.numpy())
 
     # Save TSNE plot
     fig.savefig(os.path.join(
-                args.plot_dir, f'tsne-{args.dataset}-{args.inference_epoch}'))
+                args.plot_dir, f'tsne-SimCLR-{args.dataset}-latent_dim{args.latent_dim}-epoch{args.inference_epoch}'))
 
 
 if __name__ == "__main__":

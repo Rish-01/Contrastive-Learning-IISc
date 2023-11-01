@@ -68,16 +68,13 @@ def main():
 
     # If we want to resume at a checkpoint
     if(args.start_at_checkpoint):
-        start_epoch = getattr(args, "start-epoch")  # The start epoch of the model you want to load.
+        start_epoch = args.start_epoch  # The start epoch of the model you want to load.
         resume_epoch = start_epoch-1
         step = start_epoch
         
-        print(os.path.join(
-                args.checkpoint_dir, f'SimCLR-{start_epoch}.pth'))
-        
         # Load the model weights from the checkpoint.
         model_checkpoint = torch.load(os.path.join(
-                args.checkpoint_dir, f'SimCLR-{resume_epoch}.pth'))
+                args.checkpoint_dir, f'SimCLR-{args.dataset}-latent_dim{args.latent_dim}-epoch{resume_epoch}.pth'))
 
         model.load_state_dict(model_checkpoint['model_state_dict'])
         optimizer.load_state_dict(model_checkpoint['optimizer_state_dict'])
