@@ -3,3 +3,4 @@ checkpoints/
 tsne_plots/
 embeddings/
 runs/
+__pycache__/
